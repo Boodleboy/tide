@@ -11,8 +11,8 @@ cd $PROJDIR
 PROJLASTPART=$(echo "$PROJDIR" | grep -o '[^\/]*$')
 
 # test if a dir name containing a period will cause issues
-tmux -L tmux-tide-$PROJLASTPART -f ~/.config/tmux/tidetmux.conf new-session -d
-tmux -L tmux-tide-$PROJLASTPART new-session -d -s $PROJLASTPART 'lf -config ~/.config/lf/tidelfrc'
+tmux -L tide -f ~/.config/tmux/tidetmux.conf new-session -d
+tmux -L tide new-session -d -s $PROJLASTPART 'lf -config ~/.config/lf/tidelfrc'
 abduco -n tide-$PROJLASTPART-sh bash
 abduco -n tide-$PROJLASTPART-lf lf -config ~/.config/lf/tidelfrc
-exec st -e tmux -L tmux-tide-$PROJLASTPART attach-session -t $PROJLASTPART
+exec st -e tmux -L tide attach-session -t $PROJLASTPART
