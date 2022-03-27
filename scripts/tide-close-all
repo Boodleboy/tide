@@ -1,0 +1,17 @@
+#!/bin/sh
+
+tmux -L tide-nest kill-session -t 0
+tmux -L tide kill-session -t 0
+
+SESSIONS=$(tmux -L tide list-sessions | grep -o '^[^:]*')
+for SES in $SESSIONS 
+do
+	tmux -L tide kill-session -t $SES
+done
+
+SESSIONS=$(tmux -L tide-nest list-sessions | grep -o '^[^:]*')
+for SES in $SESSIONS 
+do
+	tmux -L tide-nest kill-session -t tide-$SES-sh
+	tmux -L tide-nest kill-session -t tide-$SES-lf
+done

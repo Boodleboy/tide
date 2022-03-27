@@ -1,0 +1,16 @@
+#!/bin/sh
+
+
+if [ -e $1 ]
+then
+	SES=$(tmux -L tide run-shell "echo #S")
+else
+	SES=$1
+fi
+
+# TODO: check SES is valid
+
+tmux -L tide-nest kill-session -t tide-$SES-sh
+tmux -L tide-nest kill-session -t tide-$SES-lf
+tmux -L tide kill-session -t $SES
+
