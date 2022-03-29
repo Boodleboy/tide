@@ -1,0 +1,6 @@
+#!/bin/sh
+
+SESPATH=$(tmux run-shell "echo #session_path")
+tide-close-all
+# process itself gets killed before it can restart tide. Unsure how to fix
+tide-open $SESPATH
