@@ -2,11 +2,12 @@
 
 if [ -z $1 ]
 then
-	echo 'No project dir given'
+	echo 'no dir given'
 	exit
+else
+	PROJDIR=$(cd $1; pwd)
 fi
 
-PROJDIR=$(cd $1; pwd)
 cd $PROJDIR
 PROJLASTPART=$(echo "$PROJDIR" | grep -o '[^\/]*$')
 
@@ -18,4 +19,4 @@ tmux -L tide new-session -d -s $PROJLASTPART 'lf -config ~/.config/lf/tidelfrc'
 tmux -L tide-nest -f ~/.config/tmux/tidetmux.conf start-server
 tmux -L tide-nest new-session -d -s tide-$PROJLASTPART-sh bash
 tmux -L tide-nest new-session -d -s tide-$PROJLASTPART-lf 'lf -config ~/.config/lf/tidelfrc'
-exec st -e tmux -L tide attach-session -t $PROJLASTPART
+tmux -L tide attach-session -t $PROJLASTPART

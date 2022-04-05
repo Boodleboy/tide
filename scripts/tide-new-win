@@ -10,7 +10,11 @@ panename=$(echo "$1" | tr '.' '_' | grep -o '[^\/]*$')
 
 session=$(tmux run-shell 'echo #S')
 tmux new-window -n "$panename" "vim $1; tmux kill-pane -a"
-tmux split-window -t "$panename" -v -l 6 "TMUX= ; tmux -L tide-nest attach-session -t tide-$session-sh"
+# use this to get new pane id
+# bash_var=$(tmux split-window -P -F "#{pane_id}") 
+tmux split-window -t "$panename" -v -l 6 "TMUX= ;
+	tmux -L tide-nest attach-session -t tide-$session-sh"
 tmux select-pane -U
-tmux split-window -t "$panename" -h -l 30 "TMUX= ; tmux -L tide-nest attach-session -t tide-$session-lf"
+tmux split-window -t "$panename" -h -l 30 "TMUX= ;
+	tmux -L tide-nest attach-session -t tide-$session-lf"
 tmux select-pane -L

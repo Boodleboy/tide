@@ -1,0 +1,9 @@
+source ~/.config/lf/lfrc
+
+cmd pick ${{
+	pwd
+	quit
+}}
+
+map <enter> $pwd; lf -remote "send $id quit"
+map e quit

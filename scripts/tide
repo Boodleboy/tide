@@ -1,0 +1,8 @@
+#!/bin/sh
+
+if [ -z $1 ]
+then
+	exec st -e bash -c 'tide-open $(tide-dir-picker)'
+else
+	exec st -e tide-open $1
+fi

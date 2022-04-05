@@ -1,0 +1,4 @@
+#!/bin/sh
+
+dir=$(lf -config ~/.config/lf/tidelfpickerrc)
+echo "$dir"
