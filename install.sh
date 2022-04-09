@@ -5,6 +5,7 @@ CONFIG=~/.config
 
 SCRIPTS="tide \
 	tide-new-win \
+	tide-new-win-cmd \
 	tide-open \
 	tide-close \
 	tide-close-all \

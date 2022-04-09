@@ -1,0 +1,23 @@
+#!/bin/sh
+
+# You can't target a tmux pane that has a period in the name
+panename=$(echo "$1" | tr '.' '_' | grep -o '[^\/]*$')
+
+OPTIND=1
+while getopts "n:" opt; do
+	case "$opt" in
+		n) panename=$OPTARG
+			;;
+	esac
+done
+shift $((OPTIND-1))
+session=$(tmux run-shell 'echo #S')
+tmux new-window -n "$panename" "$@; tmux kill-pane -a"
+# use this to get new pane idstuff
+# bash_var=$(tmux split-window -P -F "#{pane_id}") 
+tmux split-window -t "$panename" -v -l 6 "TMUX= ;
+	tmux -L tide-nest attach-session -t tide-$session-sh"
+tmux select-pane -U
+tmux split-window -t "$panename" -h -l 30 "TMUX= ;
+	tmux -L tide-nest attach-session -t tide-$session-lf"
+tmux select-pane -L
