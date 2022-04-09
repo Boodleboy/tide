@@ -1,6 +1,6 @@
 #!/bin/sh
 
-lines=$(grep -sr '.*' *)
+lines=$(grep --color=always -sr '.*' *)
 
-file=$(echo "$lines" | fzf | grep -o ^[^:]*)
+file=$(echo "$lines" | fzf --ansi | grep -o ^[^:]*)
 nvim $file
