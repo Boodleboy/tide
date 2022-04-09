@@ -9,7 +9,7 @@ fi
 panename=$(echo "$1" | tr '.' '_' | grep -o '[^\/]*$')
 
 session=$(tmux run-shell 'echo #S')
-tmux new-window -n "$panename" "vim $1; tmux kill-pane -a"
+tmux new-window -n "$panename" "nvim $1; tmux kill-pane -a"
 # use this to get new pane id
 # bash_var=$(tmux split-window -P -F "#{pane_id}") 
 tmux split-window -t "$panename" -v -l 6 "TMUX= ;
