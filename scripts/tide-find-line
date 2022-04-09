@@ -1,0 +1,6 @@
+#!/bin/sh
+
+lines=$(grep -sr '.*' *)
+
+file=$(echo "$lines" | fzf | grep -o ^[^:]*)
+nvim $file

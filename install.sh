@@ -11,7 +11,8 @@ SCRIPTS="tide \
 	tide-close-all \
 	tide-restart \
 	tide-dir-picker \
-	tide-find
+	tide-find \
+	tide-find-line
 	"
 
 cd scripts
