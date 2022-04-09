@@ -1,0 +1,8 @@
+#!/bin/sh
+
+DIR=$(tmux run-shell  'echo #{session_path}')
+cd $DIR
+FILE=$(fzf)
+
+# should set window name
+nvim $FILE

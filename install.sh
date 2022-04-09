@@ -10,7 +10,8 @@ SCRIPTS="tide \
 	tide-close \
 	tide-close-all \
 	tide-restart \
-	tide-dir-picker
+	tide-dir-picker \
+	tide-find
 	"
 
 cd scripts
